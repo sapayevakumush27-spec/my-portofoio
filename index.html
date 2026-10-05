@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapayeva Kumush — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0a0a0f',
+                        cardBg: 'rgba(255, 255, 255, 0.03)',
+                        borderGlass: 'rgba(255, 255, 255, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a0a0f;
+            color: #f3f4f6;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-hover:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc 0%, #60a5fa 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-bg {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%);
+            filter: blur(80px);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 selection:bg-purple-500 selection:text-white relative overflow-x-hidden" x-data="{ mobileMenu: false, activeTab: 'all', formSubmitted: false }">
+
+    <!-- Background Ambient Glows -->
+    <div class="glow-bg top-10 left-10"></div>
+    <div class="glow-bg top-1/2 right-10"></div>
+    <div class="glow-bg bottom-10 left-1/3"></div>
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-xl font-extrabold tracking-wider gradient-text flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-purple-500 animate-pulse"></span>
+                SAPAYEVA KUMUSH
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#about" class="hover:text-purple-400 transition">Men haqimda</a>
+                <a href="#skills" class="hover:text-purple-400 transition">Ko'nikmalar</a>
+                <a href="#projects" class="hover:text-purple-400 transition">Loyihalar</a>
+                <a href="#experience" class="hover:text-purple-400 transition">Tajriba</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 hover:scale-105 transition duration-300">Bog'lanish</a>
+            </nav>
+
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-gray-300 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" @click.away="mobileMenu = false" class="md:hidden glass border-b border-white/10 px-6 py-6 flex flex-col gap-4 text-center">
+            <a href="#about" @click="mobileMenu = false" class="text-gray-300 hover:text-purple-400 py-2">Men haqimda</a>
+            <a href="#skills" @click="mobileMenu = false" class="text-gray-300 hover:text-purple-400 py-2">Ko'nikmalar</a>
+            <a href="#projects" @click="mobileMenu = false" class="text-gray-300 hover:text-purple-400 py-2">Loyihalar</a>
+            <a href="#experience" @click="mobileMenu = false" class="text-gray-300 hover:text-purple-400 py-2">Tajriba</a>
+            <a href="#contact" @click="mobileMenu = false" class="py-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold">Bog'lanish</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-20">
+
+        <!-- Hero Section -->
+        <section class="min-h-[85vh] flex flex-col justify-center items-center text-center relative py-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 border border-purple-500/30 text-purple-300 text-sm font-medium animate-bounce">
+                <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i>
+                <span>UI/UX Dizayner & Full-Stack Dasturchi</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-4xl mb-6 leading-tight">
+                Salom, men <span class="gradient-text">Sapayeva Kumush</span>. Raqamli olamda mukammallik yarataman.
+            </h1>
+
+            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 font-normal">
+                Foydalanuvchilarga qulay, zamonaviy va yuqori darajadagi veb-ilovalar hamda estetik dizaynlarni ishlab chiqaman.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <a href="#projects" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold shadow-xl shadow-purple-600/25 hover:shadow-purple-600/40 hover:scale-105 transition duration-300 flex items-center gap-2">
+                    <span>Ishlarimni ko'rish</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-2xl glass glass-hover text-gray-200 font-bold transition duration-300">
+                    Bog'lanish
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20 w-full max-w-3xl">
+                <div class="glass p-6 rounded-2xl text-center">
+                    <h3 class="text-3xl font-extrabold gradient-text mb-1">3+</h3>
+                    <p class="text-gray-400 text-sm">Yillik Tajriba</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <h3 class="text-3xl font-extrabold gradient-text mb-1">25+</h3>
+                    <p class="text-gray-400 text-sm">Muvaffaqiyatli Loyiha</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center col-span-2 md:col-span-1">
+                    <h3 class="text-3xl font-extrabold gradient-text mb-1">100%</h3>
+                    <p class="text-gray-400 text-sm">Mamnun Mijozlar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-24">
+            <div class="glass p-8 md:p-12 rounded-3xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                            <span class="w-2 h-8 bg-purple-500 rounded-full"></span>
+                            Men Haqimda
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed mb-6 text-lg">
+                            Men raqamli mahsulotlar yaratishga bo'lgan ishtiyoqi baland mutaxassisman. Foydalanuvchi tajribasini (UX) chuqur tahlil qilgan holda, vizual jihatdan jozibali va texnik jihatdan mukammal veb-saytlar va ilovalarni barpo etaman.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed mb-8">
+                            Har bir loyihada ijodkorlik va texnologiyani uyg'unlashtirib, biznes va foydalanuvchilar uchun eng maqbul yechimlarni taqdim etishga intilaman.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 rounded-xl glass text-purple-300 text-sm font-medium">UI/UX Design</span>
+                            <span class="px-4 py-2 rounded-xl glass text-blue-300 text-sm font-medium">Frontend Development</span>
+                            <span class="px-4 py-2 rounded-xl glass text-emerald-300 text-sm font-medium">Full-Stack Architecture</span>
+                        </div>
+                    </div>
+                    <div class="glass p-8 rounded-2xl border border-white/10 flex flex-col gap-6">
+                        <h3 class="text-xl font-bold text-gray-200">Asosiy Ma'lumotlar</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-center justify-between border-b border-white/5 pb-3">
+                                <span class="text-gray-400">Ism:</span>
+                                <span class="font-semibold text-white">Sapayeva Kumush</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-white/5 pb-3">
+                                <span class="text-gray-400">Mutaxassislik:</span>
+                                <span class="font-semibold text-white">UI/UX & Developer</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-white/5 pb-3">
+                                <span class="text-gray-400">Joylashuv:</span>
+                                <span class="font-semibold text-white">O'zbekiston</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-400">Email:</span>
+                                <span class="font-semibold text-purple-400">kumush@example.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Texnik Ko'nikmalar</h2>
+                <p class="text-gray-400">Loyihalarimda foydalanadigan zamonaviy vositalar va texnologiyalar stacki.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:scale-110 transition">
+                        <i data-lucide="figma" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">Figma</h4>
+                    <p class="text-xs text-gray-400">UI/UX & Prototyping</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition">
+                        <i data-lucide="code" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">React / Next.js</h4>
+                    <p class="text-xs text-gray-400">Frontend Framework</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition">
+                        <i data-lucide="layout" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">Tailwind CSS</h4>
+                    <p class="text-xs text-gray-400">Modern Styling</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition">
+                        <i data-lucide="server" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">Node.js</h4>
+                    <p class="text-xs text-gray-400">Backend Development</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 group-hover:scale-110 transition">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">PostgreSQL</h4>
+                    <p class="text-xs text-gray-400">Database</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition">
+                        <i data-lucide="git-branch" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">Git & GitHub</h4>
+                    <p class="text-xs text-gray-400">Version Control</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-rose-500/10 flex items-center justify-center text-rose-400 group-hover:scale-110 transition">
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">Responsive Web</h4>
+                    <p class="text-xs text-gray-400">Mobile Optimization</p>
+                </div>
+
+                <div class="glass glass-hover p-6 rounded-2xl text-center transition duration-300 group">
+                    <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:scale-110 transition">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-200 mb-1">AI Integration</h4>
+                    <p class="text-xs text-gray-400">APIs & Automation</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-3">Tanlangan Loyihalar</h2>
+                    <p class="text-gray-400">Mening eng so'nggi va eng yaxshi ishlarim bilan tanishing.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
+                    <button @click="activeTab = 'all'" :class="activeTab === 'all' ? 'bg-purple-600 text-white' : 'glass text-gray-400'" class="px-4 py-2 rounded-xl text-sm font-medium transition">Barchasi</button>
+                    <button @click="activeTab = 'web'" :class="activeTab === 'web' ? 'bg-purple-600 text-white' : 'glass text-gray-400'" class="px-4 py-2 rounded-xl text-sm font-medium transition">Veb Ilovalar</button>
+                    <button @click="activeTab = 'ui'" :class="activeTab === 'ui' ? 'bg-purple-600 text-white' : 'glass text-gray-400'" class="px-4 py-2 rounded-xl text-sm font-medium transition">UI/UX Dizayn</button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" x-show="activeTab === 'all' || activeTab === 'web'">
+                    <div class="h-48 bg-gradient-to-br from-purple-900/40 to-blue-900/40 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-cover opacity-30 group-hover:scale-110 transition duration-500 bg-[radial-gradient(#c084fc_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <span class="text-2xl font-bold tracking-wider text-purple-300 z-10">E-Commerce Platform</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex gap-2 mb-3">
+                                <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">React</span>
+                                <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-xs font-semibold">Tailwind</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Zamonaviy E-Do'kon</h3>
+                            <p class="text-gray-400 text-sm mb-6">Foydalanuvchilarga qulay, tezkor va xavfsiz onlayn savdo platformasi.</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="flex items-center gap-1 text-sm font-semibold text-purple-400 hover:text-purple-300 transition">
+                                <span>Demo ko'rish</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-gray-200 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>Kod</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" x-show="activeTab === 'all' || activeTab === 'ui'">
+                    <div class="h-48 bg-gradient-to-br from-blue-900/40 to-emerald-900/40 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-cover opacity-30 group-hover:scale-110 transition duration-500 bg-[radial-gradient(#60a5fa_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <span class="text-2xl font-bold tracking-wider text-blue-300 z-10">Fintech Dashboard</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex gap-2 mb-3">
+                                <span class="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-xs font-semibold">Figma</span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold">UI/UX</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Moliyaviy Boshqaruv Paneli</h3>
+                            <p class="text-gray-400 text-sm mb-6">Bank va moliya xizmatlari uchun intuitiv va minimalist dizayn tizimi.</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="flex items-center gap-1 text-sm font-semibold text-purple-400 hover:text-purple-300 transition">
+                                <span>Figma Prototip</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass rounded-3xl overflow-hidden border border-white/10 group flex flex-col justify-between" x-show="activeTab === 'all' || activeTab === 'web'">
+                    <div class="h-48 bg-gradient-to-br from-emerald-900/40 to-purple-900/40 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-cover opacity-30 group-hover:scale-110 transition duration-500 bg-[radial-gradient(#34d399_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                        <span class="text-2xl font-bold tracking-wider text-emerald-300 z-10">AI Assistant App</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex gap-2 mb-3">
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-semibold">Next.js</span>
+                                <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-xs font-semibold">Gemini API</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">AI Yordamchi Ilovasi</h3>
+                            <p class="text-gray-400 text-sm mb-6">Sun'iy intellekt integratsiyalangan aqlli yordamchi platformasi.</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="flex items-center gap-1 text-sm font-semibold text-purple-400 hover:text-purple-300 transition">
+                                <span>Demo ko'rish</span>
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#" class="flex items-center gap-1 text-sm font-semibold text-gray-400 hover:text-gray-200 transition">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                <span>Kod</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experience" class="py-24">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kasbiy Tajriba</h2>
+                <p class="text-gray-400">Mening professional faoliyatim va erishgan marralarim.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto relative border-l border-white/10 pl-6 md:pl-10 space-y-12">
+                <!-- Timeline item 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-darkBg"></div>
+                    <div class="glass p-6 rounded-2xl">
+                        <span class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-2 block">2024 — Hozirgi vaqt gacha</span>
+                        <h3 class="text-xl font-bold text-white mb-1">Senior UI/UX & Frontend Developer</h3>
+                        <p class="text-gray-400 text-sm mb-4">Tech Solutions LLC</p>
+                        <p class="text-gray-300 text-sm">Katta hajmdagi veb-ilovalar arxitekturasi, dizayn tizimlari va mijozlar uchun mahsulotlar yaratishga rahbarlik qilish.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline item 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-darkBg"></div>
+                    <div class="glass p-6 rounded-2xl">
+                        <span class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2 block">2022 — 2024</span>
+                        <h3 class="text-xl font-bold text-white mb-1">UI/UX Designer & Web Developer</h3>
+                        <p class="text-gray-400 text-sm mb-4">Creative Studio</p>
+                        <p class="text-gray-300 text-sm">Turli xil xalqaro va mahalliy mijozlar uchun veb-sayt dizaynlari va frontend qismini ishlab chiqish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24">
+            <div class="glass p-8 md:p-14 rounded-3xl max-w-4xl mx-auto relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-xl mx-auto mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Bog'lanish</h2>
+                    <p class="text-gray-400">Yangi loyiha bo'yicha g'oyangiz bormi yoki hamkorlik qilmoqchimisiz? Menga yozing!</p>
+                </div>
+
+                <form @submit.prevent="formSubmitted = true" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Ismingiz</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl glass border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition" placeholder="Ismingizni kiriting">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email manzilingiz</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl glass border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition" placeholder="email@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Xabaringiz</label>
+                        <textarea rows="5" required class="w-full px-4 py-3 rounded-xl glass border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition" placeholder="Loyihangiz haqida qisqacha yozing..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold shadow-xl shadow-purple-600/25 hover:shadow-purple-600/40 hover:scale-[1.01] transition duration-300 flex items-center justify-center gap-2">
+                        <span>Xabarni yuborish</span>
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Success Message -->
+                    <div x-show="formSubmitted" x-transition class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-center font-medium">
+                        Xabaringiz muvaffaqiyatli yuborildi, Sapayeva Kumush tez orada siz bilan bog'lanadi!
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass border-t border-white/10 py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="text-gray-400 text-sm">© 2026 Sapayeva Kumush. Barcha huquqlar himoyalangan.</p>
+            <div class="flex items-center gap-6 text-gray-400">
+                <a href="#" class="hover:text-purple-400 transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-purple-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-purple-400 transition"><i data-lucide="send" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-purple-400 transition"><i data-lucide="mail" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons Init -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
